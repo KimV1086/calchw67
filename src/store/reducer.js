@@ -13,8 +13,6 @@ const reducer = (state = initialState, action) => {
         case ENTER_NUM:
             if (state.operator && !state.result) {
                 if (state.secondOperand !== '0' && state.secondOperand.length < 12) {
-                    //ограничиваю длину вводимого значения
-
                     return {
                         ...state,
                         secondOperand: state.secondOperand + action.value
