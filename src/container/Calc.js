@@ -1,11 +1,18 @@
 import React, {Component} from 'react';
-// import {connect} from "react-redux";
+import {connect} from "react-redux";
+import Display from "../components/Display/Display";
+import {calc, clear, enterNum, enterOperator} from "../store/actions";
 
 class Calc extends Component {
     render() {
         return (
             <div className="calc">
-
+                <Display
+                    firstOperand={this.props.firstOperand}
+                    secondOperand={this.props.secondOperand}
+                    operator={this.props.operator}
+                    result={this.props.result}
+                />
                 <div className="calc-keyboard">
                     <div>
                         <input type="button" onClick={this.props.enterNum} value="7"/>
@@ -37,8 +44,24 @@ class Calc extends Component {
     }
 }
 
+const mapStateToProps = state => {
+    return {
+        firstOperand: state.firstOperand,
+        secondOperand: state.secondOperand,
+        operator: state.operator,
+        result: state.result
+    }
+};
+
+const mapDispatchToProps = dispatch => {
+    return {
+        enterNum: (event) => dispatch(enterNum(event.target.value)),
+        enterOperator: (event) => dispatch(enterOperator(event.target.value)),
+        clear: () => dispatch(clear()),
+        calc: () => dispatch(calc()),
+    }
+};
 
 
 
-
-export default Calc;
+export default connect(mapStateToProps, mapDispatchToProps)(Calc);

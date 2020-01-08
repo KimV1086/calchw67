@@ -1,6 +1,6 @@
 import React from 'react';
 
-const CalcDisplay = props => (
+const Display = props => (
     <div className="calc-display">
         <div className="result">{props.result}</div>
         <div className="operand">{props.operator} {props.secondOperand}</div>
@@ -9,4 +9,4 @@ const CalcDisplay = props => (
 );
 
 
-export default CalcDisplay;
+export default Display;
