@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import {connect} from "react-redux";
+// import {connect} from "react-redux";
 
 class Calc extends Component {
     render() {
@@ -37,23 +37,8 @@ class Calc extends Component {
     }
 }
 
-const mapStateToProps = state => {
-    return {
-        firstOperand: state.firstOperand,
-        secondOperand: state.secondOperand,
-        operator: state.operator,
-        result: state.result
-    }
-};
 
-const mapDispatchToProps = dispatch => {
-    return {
-        enterNum: (event) => dispatch(enterNum(event.target.value)),
-        enterOperator: (event) => dispatch(enterOperator(event.target.value)),
-        clear: () => dispatch(clear()),
-        calc: () => dispatch(calc()),
-    }
 
-};
 
-export default connect(mapStateToProps, mapDispatchToProps)(Calc);
+
+export default Calc;
